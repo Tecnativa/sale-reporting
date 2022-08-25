@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2018-2019 Tecnativa - Ernesto Tejeda
+     Copyright 2022 Tecnativa - Víctor Martínez
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
   <template
         id="report_invoice_document_hide_detail"
         inherit_id="account.report_invoice_document"
     >
+    <xpath
+            expr='//tbody[hasclass("invoice_tbody")]//t[@t-if="line.display_type == &apos;line_section&apos;"]//td'
+            position="replace"
+        >
+        <t t-if="line.quantity or line.price_unit">
+            <td name="td_section_line">
+                <span t-field="line.name" />
+            </td>
+            <td name="td_quantity" class="text-right">
+                <span t-field="line.quantity" />
+            </td>
+            <t t-if="not line.price_unit">
+                <t t-set="current_subtotal_item" t-value="0" />
+                <t t-set="last_section_id" t-value="0" />
+                <t t-foreach="lines" t-as="line2">
+                    <t t-if="not line2.display_type and last_section_id==line.id">
+                        <t
+                                t-set="current_subtotal_item"
+                                t-value="current_subtotal_item + line2.price_subtotal"
+                                groups="account.group_show_line_subtotals_tax_excluded"
+                            />
+                        <t
+                                t-set="current_subtotal_item"
+                                t-value="current_subtotal_item + line2.price_total"
+                                groups="account.group_show_line_subtotals_tax_included"
+                            />
+                    </t>
+                    <t t-if="line2.display_type == 'line_section'">
+                        <t t-set="last_section_id" t-value="line2.id" />
+                    </t>
+                </t>
+            </t>
+            <td name="td_priceunit" class="text-right">
+                <span t-field="line.price_unit" t-if="line.price_unit" />
+                <span
+                        t-esc="current_subtotal_item/line.quantity"
+                        t-if="not line.price_unit"
+                    />
+            </td>
+            <td name="empty" colspan="99" />
+        </t>
+        <t t-else="">
+            <td colspan="99">
+                <span t-field="line.name" t-options="{'widget': 'text'}" />
+            </td>
+        </t>
+    </xpath>
     <xpath
             expr="//tbody[hasclass('invoice_tbody')]//t[@name='account_invoice_line_accountable']"
             position="attributes"

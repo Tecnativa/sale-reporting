@@ -13,6 +13,14 @@
             >
                 <group>
                     <field
+                        name="product_uom_qty"
+                        attrs="{'invisible': [('display_type', '!=', 'line_section')]}"
+                    />
+                    <field
+                        name="price_unit"
+                        attrs="{'invisible': [('display_type', '!=', 'line_section')]}"
+                    />
+                    <field
                         name="show_details"
                         attrs="{'invisible': [('display_type', '!=', 'line_section')]}"
                     />
