@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <!-- no update so users can freely customize/delete the template -->
     <data noupdate="1">
@@ -14,7 +14,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <p>
-                                This is a <strong>sample quotation template</strong>. You should
+                                This is a <strong
+                                >sample quotation template</strong>. You should
                                 customize it to fit your own needs from the <i>Sales</i>
                                 application, using the menu: Configuration /
                                 Quotation Templates.
@@ -61,7 +62,8 @@
                 </section>
                 <section data-snippet-id="text-block">
                     <p>
-                        You can <strong>set a description per product</strong>. Odoo will
+                        You can <strong
+                        >set a description per product</strong>. Odoo will
                         automatically create a quotation using the descriptions
                         of all products in the proposal. The table of content
                         on the left is generated automatically using the styles you
@@ -76,6 +78,9 @@
             </field>
         </record>
 
-        <function model="res.company" name="_set_default_sale_order_template_id_if_empty"/>
+        <function
+            model="res.company"
+            name="_set_default_sale_order_template_id_if_empty"
+        />
     </data>
 </odoo>
