@@ -8,7 +8,6 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     quotation_only_description = fields.Html(
-        string="Quotation Only Description",
         translate=html_translate,
         sanitize_attributes=False,
         sanitize_overridable=True,
@@ -16,7 +15,6 @@ class ProductTemplate(models.Model):
     )
 
     quotation_description = fields.Html(
-        string="Quotation Description",
         compute="_compute_quotation_description",
         sanitize_attributes=False,
         sanitize_overridable=True,

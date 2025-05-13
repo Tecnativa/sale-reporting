@@ -8,7 +8,6 @@ class SaleOrderTemplate(models.Model):
     _inherit = "sale.order.template"
 
     website_description = fields.Html(
-        string="Website Description",
         translate=html_translate,
         sanitize_overridable=True,
         sanitize_attributes=False,

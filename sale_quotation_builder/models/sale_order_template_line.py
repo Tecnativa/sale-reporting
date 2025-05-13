@@ -10,7 +10,6 @@ class SaleOrderTemplateLine(models.Model):
     # FIXME ANVFE why are the sanitize_* attributes different between this field
     # and the one on option lines, doesn't make any sense ???
     website_description = fields.Html(
-        string="Website Description",
         compute="_compute_website_description",
         store=True,
         readonly=False,

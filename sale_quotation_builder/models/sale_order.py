@@ -8,7 +8,6 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     website_description = fields.Html(
-        string="Website Description",
         compute="_compute_website_description",
         store=True,
         readonly=False,
