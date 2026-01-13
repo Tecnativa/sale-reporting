@@ -1,3 +1,5 @@
-- Maksym Yankin \<<maksym.yankin@camptocamp.com>\>
+- \[Camptocamp SA\](<https://www.camptocamp.com>):
+  - Maksym Yankin \<<maksym.yankin@camptocamp.com>\>
+  - Silvio Gregorini \<<silvio.gregorini@camptocamp.com>\>
 - \[APSL-Nagarro\](<https://apsl.tech>):
   - Antoni Marroig \<<amarroig@apsl.net>\>
