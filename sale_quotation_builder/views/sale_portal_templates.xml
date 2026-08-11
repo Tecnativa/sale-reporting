@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <template
         id="sale_order_portal_content_inherit_sale_quotation_builder"
         name="Order Design"
@@ -22,11 +21,11 @@
                         role="status"
                     >
                         <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                    />
                         Product: <strong t-out="line.product_id.name" />:
                         the content below will disappear if this
                         product is removed from the quote.
@@ -93,8 +92,8 @@
                                         role="status"
                                     >
                                         Product: <strong
-                                            t-out="line.product_id.name"
-                                        />:
+                                        t-out="line.product_id.name"
+                                    />:
                                         this content will appear on the quotation only if this
                                         product is put on the quote.
                                     </div>
@@ -122,8 +121,8 @@
                                         role="status"
                                     >
                                         Optional Product: <strong
-                                            t-out="option_line.product_id.name"
-                                        />:
+                                        t-out="option_line.product_id.name"
+                                    />:
                                         this content will appear on the quotation only if this
                                         product is used in the quote.
                                     </div>

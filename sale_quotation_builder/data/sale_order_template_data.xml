@@ -15,11 +15,12 @@
                         <div class="col-lg-12">
                             <p>
                                 This is a <strong
-                                >sample quotation template</strong>. You should
+                            >sample quotation template</strong>. You should
                                 customize it to fit your own needs from the <i>Sales</i>
                                 application, using the menu: Configuration /
                                 Quotation Templates.
-                            </p><p>
+                            </p>
+                            <p>
                                 Great quotation templates will significantly
                                 <strong>boost your success rate</strong>. The
                                 first section is usually about your company,
@@ -63,12 +64,13 @@
                 <section data-snippet-id="text-block">
                     <p>
                         You can <strong
-                        >set a description per product</strong>. Odoo will
+                    >set a description per product</strong>. Odoo will
                         automatically create a quotation using the descriptions
                         of all products in the proposal. The table of content
                         on the left is generated automatically using the styles you
                         used in your description (heading 1, heading 2, ...)
-                    </p><p>
+                    </p>
+                    <p>
                         If you edit a quotation from the 'Preview' of a quotation, you will
                         update that quotation only. If you edit the quotation
                         template (from the Configuration menu), all future quotations will
