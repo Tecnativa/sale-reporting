@@ -105,11 +105,11 @@
                             </t>
                             <t t-set="product_tmpl_ids" t-value="[]" />
                             <t
-                                t-foreach="template.sale_order_template_option_ids"
+                                t-foreach="template.sale_order_template_line_ids"
                                 t-as="option_line"
                             >
                                 <t
-                                    t-if="option_line.product_id.product_tmpl_id.id not in product_tmpl_ids"
+                                    t-if="option_line.product_id.product_tmpl_id.id not in product_tmpl_ids and option_line.is_optional"
                                 >
                                     <t
                                         t-set="product_tmpl_ids"

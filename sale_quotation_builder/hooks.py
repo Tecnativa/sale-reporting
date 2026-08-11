@@ -26,9 +26,3 @@ def pre_init_hook(env):
         ADD COLUMN "website_description" text
     """
     )
-    env.cr.execute(
-        """
-        ALTER TABLE "sale_order_template_option"
-        ADD COLUMN "website_description" text
-    """
-    )

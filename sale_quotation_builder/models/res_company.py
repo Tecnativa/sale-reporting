@@ -14,6 +14,6 @@ class ResCompany(models.Model):
         )
         if not template:
             return
-        companies = self.sudo().search([])
+        companies = self.sudo().search([])  # pylint: disable=no-search-all
         for company in companies:
             company.sale_order_template_id = company.sale_order_template_id or template

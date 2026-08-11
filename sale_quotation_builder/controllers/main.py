@@ -2,8 +2,6 @@
 
 from odoo.http import Controller, request, route
 
-from odoo.addons.http_routing.models.ir_http import unslug
-
 
 class QuotationBuilderController(Controller):
     @route(
@@ -13,7 +11,7 @@ class QuotationBuilderController(Controller):
         website=True,
     )
     def sale_quotation_builder_template_view(self, template_id, **post):
-        template_id = unslug(template_id)[-1]
+        template_id = request.env["ir.http"]._unslug(template_id)[-1]
         template = (
             request.env["sale.order.template"]
             .browse(template_id)

@@ -18,7 +18,8 @@ class TestSaleQuotationBuilder(BaseCommon):
                 "name": "Test product 1",
                 "type": "service",
                 "list_price": 100,
-                "taxes_id": [(6, 0, [])],
+                "taxes_id": [Command.clear()],
+                "quotation_only_description": "<p>Product 1 description</p>",
             }
         )
         cls.product_2 = cls.Product.create(
@@ -26,7 +27,8 @@ class TestSaleQuotationBuilder(BaseCommon):
                 "name": "Test product 2",
                 "type": "service",
                 "list_price": 150,
-                "taxes_id": [(6, 0, [])],
+                "taxes_id": [Command.clear()],
+                "quotation_only_description": "<p>Product 2 description</p>",
             }
         )
         cls.partner = cls.env["res.partner"].create({"name": "Test partner"})
@@ -40,15 +42,14 @@ class TestSaleQuotationBuilder(BaseCommon):
                             "product_id": cls.product_1.id,
                             "website_description": "<p>Product 1 description</p>",
                         }
-                    )
-                ],
-                "sale_order_template_option_ids": [
+                    ),
                     Command.create(
                         {
                             "product_id": cls.product_2.id,
                             "website_description": "<p>Product 2 description</p>",
+                            "is_optional": True,
                         }
-                    )
+                    ),
                 ],
             }
         )
@@ -63,8 +64,9 @@ class TestSaleQuotationBuilder(BaseCommon):
         sale_template_form.name = "Template 1"
         with sale_template_form.sale_order_template_line_ids.new() as line_form:
             line_form.product_id = self.product_1
-        with sale_template_form.sale_order_template_option_ids.new() as line_form:
+        with sale_template_form.sale_order_template_line_ids.new() as line_form:
             line_form.product_id = self.product_2
+            line_form.is_optional = True
         with sale_template_form.sale_order_template_line_ids.new() as line_note:
             line_note.display_type = "line_note"
             line_note.name = "This is a note"
@@ -75,7 +77,7 @@ class TestSaleQuotationBuilder(BaseCommon):
         template_line_1 = sale_template.sale_order_template_line_ids.filtered(
             lambda line: line.product_id == self.product_1
         )
-        template_line_2 = sale_template.sale_order_template_option_ids.filtered(
+        template_line_2 = sale_template.sale_order_template_line_ids.filtered(
             lambda line: line.product_id == self.product_2
         )
         self.assertEqual(
@@ -90,6 +92,9 @@ class TestSaleQuotationBuilder(BaseCommon):
         """Test that the sale order is created from the template and that the
         website description are set correctly.
         """
+        self.env.user.group_ids |= self.env.ref(
+            "sale_management.group_sale_order_template"
+        )
         sale_form = Form(self.env["sale.order"])
         sale_form.partner_id = self.partner
         sale_form.sale_order_template_id = self.sale_template_1
@@ -97,7 +102,7 @@ class TestSaleQuotationBuilder(BaseCommon):
         sale_line_contract_1 = order.order_line.filtered(
             lambda line: line.product_id == self.product_1
         )
-        sale_line_contract_2 = order.sale_order_option_ids.filtered(
+        sale_line_contract_2 = order.order_line.filtered(
             lambda line: line.product_id == self.product_2
         )
         self.assertEqual(order.website_description, "<p>Template description</p>")
@@ -110,5 +115,5 @@ class TestSaleQuotationBuilder(BaseCommon):
         action = self.sale_template_1.action_open_template()
         self.assertEqual(
             action["url"],
-            "/@/sale_quotation_builder/template/%d" % self.sale_template_1.id,
+            f"/@/sale_quotation_builder/template/{self.sale_template_1.id}",
         )
