@@ -1,5 +1,6 @@
 # Copyright 2024 Tecnativa - Carolina Fernandez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from odoo import Command
 
 
 def uninstall_hook(env):
@@ -9,4 +10,4 @@ def uninstall_hook(env):
             "sales_team.group_sale_salesman", raise_if_not_found=False
         )
         if group_salesman:
-            menu_sale_report.write({"groups_id": [(3, group_salesman.id)]})
+            menu_sale_report.write({"group_ids": [Command.unlink(group_salesman.id)]})
