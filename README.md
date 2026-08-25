@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [sale_order_line_position](sale_order_line_position/) | 19.0.1.0.0 |  | Adds position number on sale order line.
 [sale_order_report_hide_tax](sale_order_report_hide_tax/) | 19.0.1.0.0 | <a href='https://github.com/chienandalu'><img src='https://github.com/chienandalu.png' width='32' height='32' style='border-radius:50%;' alt='chienandalu'/></a> <a href='https://github.com/rafaelbn'><img src='https://github.com/rafaelbn.png' width='32' height='32' style='border-radius:50%;' alt='rafaelbn'/></a> | Hide taxes column when they don't add value
 [sale_order_report_product_image](sale_order_report_product_image/) | 19.0.1.0.0 |  | Show product images on Sale documents
+[sale_report_salesman](sale_report_salesman/) | 19.0.1.0.0 | <a href='https://github.com/carolina-fernandez'><img src='https://github.com/carolina-fernandez.png' width='32' height='32' style='border-radius:50%;' alt='carolina-fernandez'/></a> | Adds the Sales Reporting menu to the Salespersons user group.
 
 [//]: # (end addons)
 
