@@ -4,10 +4,10 @@
 {
     "name": "Sales Team Invoiced Target Domain",
     "version": "17.0.1.0.0",
-    "author": "Tecnativa," "Odoo Community Association (OCA)",
+    "author": "Tecnativa,Odoo Community Association (OCA)",
     "category": "Sale",
     "license": "AGPL-3",
-    "website": "https://github.com/OCA/sale-workflow",
+    "website": "https://github.com/OCA/sale-reporting",
     "depends": ["sale"],
     "data": [
         "views/res_config_settings_views.xml",
